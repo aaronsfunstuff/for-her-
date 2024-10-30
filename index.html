@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Survey Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #F8C8DC;
+            overflow: hidden;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        /* Heart Shape */
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #FF6B6B;
+            transform: rotate(45deg);
+            animation: float 4s ease-in-out infinite;
+            opacity: 0.8;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #FF6B6B;
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -10px;
+            left: 0;
+        }
+
+        .heart::after {
+            left: 10px;
+            top: 0;
+        }
+
+        /* Floating animation */
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(45deg);
+                opacity: 0.8;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(45deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .header_text {
+            font-size: 40px;
+            font-weight: bold;
+            color: white;
+            margin-top: 20px;
+            margin-bottom: 0px;
+        }
+
+        .gif_container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .sage {
+            max-width: 50%;
+            max-height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="header_text">Yayy</h1>
+        <div class="gif_container">
+            <img src="https://media.tenor.com/k2nlhWgMVucAAAAi/cute.gif" class="sage" alt="Cute gif">
+        </div>
+        <h1 class="header_text">See You Then</h1>
+    </div>
+
+    <script>
+        // Function to create floating hearts
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.style.left = `${Math.random() * 100}vw`;
+            heart.style.animationDuration = `${2 + Math.random() * 3}s`;
+            document.body.appendChild(heart);
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        // Generate hearts every 500ms
+        setInterval(createHeart, 500);
+    </script>
+</body>
+</html>
